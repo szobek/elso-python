@@ -1,36 +1,30 @@
-# print("elsó sor")
-# data="other"
-# val = input(f"második sor {data}")
-# print("harmadik sor", val)
-menupontok: list[str] = ["1. pont", "2. pont", "3. pont", "4. pont", "5. pont", "6. pont", "7. pont", "8. pont", "9. pont", "10. pont"]
+def menuitem_file():
+    print("Fájl menüpont")
+    # Itt lehetne fájlkezelési műveleteket végezni, pl. fájl megnyitása, mentése stb.
+
+def menuitem_edit():
+    print("Szerkesztés menüpont")
+    # Itt lehetne szerkesztési műveleteket végezni, pl. szöveg módosítása, másolása stb.    
+
+def exit_from_while():
+    print("Kilépés")
+    exit()
+
+
+menuk={
+    "file": menuitem_file,
+    "edit": menuitem_edit,
+    "exit": exit_from_while
+}    
+menupontok: list[str] = ["file", "edit"]
 while True:
     print("kérlek válassz")
     for  menupont in menupontok:
         print(menupont)
-   
-    match input("kérlek válassz egy menüpontot: "):
-        case '1':
-            print("1. pont")
-        case '2':
-            print("2. pont")
-        case '3':
-            print("3. pont")
-        case '4':
-            print("4. pont")
-        case '5':
-            print("5. pont")
-        case '6':
-            print("6. pont")
-        case '7':
-            print("7. pont")
-        case '8':
-            print("8. pont")
-        case '9':
-            print("9. pont")
-        case '10':
-            print("10. pont")
-        case "k":
-            print("Kilépés")
-            break
-        case _:
-            print("Nincs ilyen menüpont")
+    parancs = input("parancs [kilépés: exit]: ")
+    fuggveny = menuk.get(parancs)
+    if fuggveny:
+        fuggveny()
+    else:
+        print("Ismeretlen parancs!")
+    print()    
